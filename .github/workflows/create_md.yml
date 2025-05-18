@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt || true
 
-      - name: Run create_new_md.py script
-        run: python .github/scripts/create_new_md.py
+      - name: Run create_day_md.py script #.github/scripts/create_day_md.py
+        run: python .github/scripts/create_day_md.py 
 
       - name: Commit and Push
         run: |
