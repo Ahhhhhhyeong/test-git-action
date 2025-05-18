@@ -23,7 +23,7 @@ def get_today_problem_info(today: date):
                 return row
     return None
 
-def update_main_readme(day_num: int, today: date, p_title: str):
+def update_main_readme(day_num: int, today: date, p_title: str, p_tag: str):
     if not os.path.exists(MAIN_README_PATH):
         print("README.md 파일이 없습니다. 스킵합니다.")
         return
@@ -31,17 +31,18 @@ def update_main_readme(day_num: int, today: date, p_title: str):
     with open(MAIN_README_PATH, "r", encoding="utf-8") as f:
         lines = f.readlines()
 
-    new_line = f"| {day_num}   | {today.isoformat()} | {p_title} | - | [Day{day_num}](./Day{day_num:02d}/README.md) |\n"
+    table_line = f"| {day_num}   | {today.isoformat()} | {p_title} | {p_tag} | [Day{day_num}](./Day{day_num:02d}/README.md) |\n"
 
+    # 진행 현황 테이블에서 마지막 라인 뒤에 삽입
     for i in reversed(range(len(lines))):
-        if lines[i].strip().startswith("|"):
-            lines.insert(i + 1, new_line)
+        if lines[i].strip().startswith("|") and "Day" in lines[i]:
+            lines.insert(i + 1, table_line)
             break
 
     with open(MAIN_README_PATH, "w", encoding="utf-8") as f:
         f.writelines(lines)
 
-    print("README.md 진행 현황 업데이트 완료")
+    print("📅 진행 현황 테이블에 줄 추가 완료")
 
 def main():
     today = date.today()
