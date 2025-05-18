@@ -81,7 +81,8 @@ def main():
 
     print(f"{day_folder}/README.md 생성 완료")
 
-    update_main_readme(day_num, today, problem["p-title"])
+    update_main_readme(day_num, today, problem.get("p-title"), problem.get("p-tag"))
+
 
 if __name__ == "__main__":
     main()
