@@ -14,6 +14,7 @@
 | 3   | 2025-05-14 | 전화번호 목록               | Hash | [Day3](./Day03/README.md)     |
 | 4   | 2025-05-15 | 의상               | Hash | [Day4](./Day04/README.md)     |
 | 5   | 2025-05-16 | K번째수               | Hash | [Day5](./Day05/README.md)     |
+| 2   | 2025-05-12 | 폰켓몬 | hash | [Day2](./Day02/README.md) |
 
 > 💡 **Tip**: 각 Day 폴더 안에는 문제 설명, 개인 풀이 코드, 리뷰 내용을 기록한 `README.md`가 포함됩니다.
 
