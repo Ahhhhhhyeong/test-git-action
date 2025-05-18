@@ -46,7 +46,7 @@ def update_main_readme(day_num: int, today: date, p_title: str, p_tag: str):
 
 def main():
     #today = date.today()
-    today = date(2025, 5, 12) # TEST
+    today = date(2025, 5, 19) # TEST
     
     if today.weekday() >= 5:
         print("주말입니다. 생성하지 않습니다.")
