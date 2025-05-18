@@ -1,37 +1,33 @@
-
-name: Daily Create README File
+name: Create Daily README
 
 on:
   schedule:
-    - cron: '0 21 * * 0-4'  # 한국 시간 기준 월~금 오전 6시 실행
+    - cron: '0 21 * * 0-4' # 한국 시간 오전 6시 = UTC 21시, 일~목 (즉 월~금 오전 6시)
   workflow_dispatch:
 
-permissions: # 권한부여
-  contents: write 
-
 jobs:
-  release-build:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
-      
-      - name: Install Dependencies
-        run: pip install -r requirements.txt || echo "no requirements"
+          python-version: '3.10'
 
-      - name: Run Script
+      - name: Install dependencies
+        run: pip install -r requirements.txt || true
+
+      - name: Run create_new_md.py script
         run: python .github/scripts/create_new_md.py
 
-      - name: Commit and Push changes
+      - name: Commit and Push
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add .
-          git commit -m "Auto-generate README $(date + '%Y-%m-%d')" || echo "No changes to commit"
+          git commit -m "자동 생성된 README.md 추가" || echo "No changes to commit"
           git push
-
