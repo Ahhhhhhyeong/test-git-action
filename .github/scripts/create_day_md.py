@@ -45,8 +45,8 @@ def update_main_readme(day_num: int, today: date, p_title: str, p_tag: str):
     print("📅 진행 현황 테이블에 줄 추가 완료")
 
 def main():
-    #today = date.today()
-    today = date(2025, 5, 19) # TEST
+    today = date.today()
+    #today = date(2025, 5, 19) # TEST
     
     if today.weekday() >= 5:
         print("주말입니다. 생성하지 않습니다.")
