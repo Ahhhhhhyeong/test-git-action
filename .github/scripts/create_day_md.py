@@ -12,7 +12,7 @@ def get_today_problem_info(today: date):
         reader = csv.DictReader(csvfile)
         for row in reader:
             # 날짜는 p-no 기준으로 계산 (Day01 = 5월 9일)
-            base_date = date(2025, 5, 9)
+            base_date = date(2025, 5, 12)
             problem_date = base_date + timedelta(days=int(row["p-num"]) - 1)
 
             # 주말 스킵
