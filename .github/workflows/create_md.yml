@@ -3,7 +3,7 @@ name: Daily Create README File
 
 on:
   schedule:
-    - cron: '0 2 * * 1-5'  # 월~금요일 매일 11AM KST (02:00 UTC)
+    - cron: '0 21 * * 0-4'  # 한국 시간 기준 월~금 오전 6시 실행
   workflow_dispatch:
 
 permissions: # 권한부여
